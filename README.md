@@ -121,3 +121,30 @@ $ ms solve example.mc
 First, you should have a standard mc file for describing the multiset constraint problem with some user-specified settings.
 
 #### Standard file format of multiset constraint problem 
+
+Let's see following example:
+
+```
+# example.mc
+e 5 6 18 44 12 3 33 11 45
+e 7 9 8 10 8 11 32 15 23 24 1 1 2 2 4 6 8 4 55 12 79 86 12 15 16 33 12 13
+t 11 74 36 56 15 9
+t 10 8 43 15 47 2 14 12 67 79 98 31 45 13 2
+r =
+s PROGRESS = False
+s ELEMENTS_ORDER = 'increase' # increase/decrease/no
+s TARGETS_ORDER = 'increase'  # increase/decrease/no
+```
+
+It is a standard-format file of a multiset constraint problem.<br />
+User should use `e`, `t`, `r`, `s`, and `#` as the first non-blank char of a line.<br />
+We call these chars as "line keyword".<br />
+keyword "e" is used to specify elements (element set).<br />
+Keyword "t" is used to specify targets (target set).<br />
+Keyword "r" is used to specify the relation between multi-subset and its corresponding target.
+Keyword "s" is used to do solver settings for a specific multiset constraint problem.<br />
+Finally, "#" is used to write down comments.
+
+Note that we could use multiple "e lines" or "t lines" to describe an element set and target set respectively and the setting statements are also allowed with comment.
+
+---
