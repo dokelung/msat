@@ -74,5 +74,9 @@ ms <cmd> [options or others]
 and we can use "cmd" to list all avalible commands:
 
 ```
-ms cmd
+$ ms cmd
+cmd          : list all avalible commands and their short usage
+solve        : solve a mc problem
+set          : edit the settings.py
+help         : show the full infomation of a command
 ```
