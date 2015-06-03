@@ -29,7 +29,7 @@ $ pip install msat --upgrade
 ```
 Here is the pypi page of msat:
 
-* [Pypi page of msat](https://pypi.python.org/pypi/msat)
+* [PyPI page of msat](https://pypi.python.org/pypi/msat)
 
 Note that if you install msat from pip, you will not get benches here.
 
