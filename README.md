@@ -8,6 +8,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
 * [How to get msat](#how-to-get-msat)
 * [Run msat](#run-msat)
 * [List commands and get help](#list-commands-and-get-help)
+ * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
 
 ===
 
@@ -90,4 +91,30 @@ set          : edit the settings.py
 help         : show the full infomation of a command
 ```
 
+If we want to know the details of a specific command, just use msat command `help`:
+
+```
+$ ms help solve
+
+    USAGE: solve a mc problem
+    SYNOPSIS:
+        solve [option] <mc file>
+    OPTION:
+```
+
+`USAGE` gives a brief description of this command.<br />
+`SYNOPSIS` gives the format of this command.<br />
+
+for example, if you want to use command `solve` for solving a multiset constraint problem (written in standard mc file format named example.mc) with default settings (that means you don't need to use any options), just type:
+
+```
+$ ms solve example.mc
+```
+
 ---
+
+### Solve a multiset constraint problem
+
+First, you should have a standard mc file for describing the multiset constraint problem with some user-specified settings.
+
+#### Standard file format of multiset constraint problem 
