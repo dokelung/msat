@@ -105,7 +105,7 @@ $ ms help solve
 `USAGE` gives a brief description of this command.<br />
 `SYNOPSIS` gives the format of this command.<br />
 
-for example, if you want to use command `solve` for solving a multiset constraint problem (written in standard mc file format named example.mc) with default settings (that means you don't need to use any options), just type:
+For example, if you want to use command `solve` for solving a multiset constraint problem (written in standard mc file format named example.mc) with default settings (that means you don't need to use any options), just type:
 
 ```
 $ ms solve example.mc
