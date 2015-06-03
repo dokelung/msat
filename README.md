@@ -8,7 +8,10 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
 * [How to get msat](#how-to-get-msat)
 * [Run msat](#run-msat)
 * [List commands and get help](#list-commands-and-get-help)
+* [Solve a multiset constraint problem](#solve-a-multiset-constraint-problem)
  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
+ * [Solve it](#solve-it)
+ * [Log messages and log file](#log-messages-and-log-file)
 
 ===
 
