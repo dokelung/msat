@@ -3,6 +3,8 @@
 
 Multiset Constraint Solver for Multi-SAT (Version-1.1)
 
+===
+
 ### Environments
 
 #### Python
@@ -10,7 +12,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
 You have to install `Python3`.
 * [Python](https://www.python.org/)
 
-===
+---
 
 ### How to get msat
 
