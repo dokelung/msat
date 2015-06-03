@@ -1,9 +1,7 @@
-# msat
+msat
 ======
 
 Multiset Constraint Solver for Multi-SAT (Version-1.1)
-
-===
 
 ### Environments
 
