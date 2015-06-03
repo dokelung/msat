@@ -55,3 +55,24 @@ If you have already installed it, just type `ms`:
 ```sh
 $ ms
 ```
+
+You will see following info:
+
+```sh
+M-SAT:
+    python3 ms <cmd> [options or others]
+          ./ms <cmd> [options or others]
+    Please use "cmd" to list all avalible commands
+```
+
+The format of ms command is:
+
+```
+ms <cmd> [options or others]
+```
+
+and we can use "cmd" to list all avalible commands:
+
+```
+ms cmd
+```
