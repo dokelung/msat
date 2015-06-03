@@ -11,7 +11,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
 * [Solve a multiset constraint problem](#solve-a-multiset-constraint-problem)
  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
  * [Solve it](#solve-it)
- * [Log messages and log file](#log-messages-and-log-file)
+ * [Log and log file](#log-messages-and-log-file)
 
 ===
 
@@ -146,5 +146,9 @@ Keyword `s` is used to do solver settings for a specific multiset constraint pro
 Finally, `#` is used to write down comments.
 
 Note that we could use multiple "e lines" or "t lines" to describe an element set and target set respectively and the setting statements are also allowed with comment.
+
+#### Solve it
+
+#### Log and log file
 
 ---
