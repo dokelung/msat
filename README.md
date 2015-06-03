@@ -82,7 +82,7 @@ ms <cmd> [options or others]
 
 We can use "cmd" to list all avalible msat commands:
 
-```sh
+```
 $ ms cmd
 cmd          : list all avalible commands and their short usage
 solve        : solve a mc problem
