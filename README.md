@@ -12,12 +12,10 @@ You have to install `Python3`.
 
 ===
 
----
-
 ### How to get msat
 
 Just download from github tarball:
-* [download msat](https://github.com/dokelung/minickt/tarball/v1.1)
+* [download msat](https://github.com/dokelung/msat/tarball/v1.1)
 
 User also can install msat from pip (Python3 Version, sometimes called pip3):
 
