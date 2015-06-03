@@ -3,6 +3,13 @@ msat
 
 Multiset Constraint Solver for Multi-SAT (Version-1.1)
 
+* [Environments](#environments)
+ * [Python](#python)
+* [How to get msat](#how-to-get-msat)
+* [Run msat](#run-msat)
+
+===
+
 ### Environments
 
 #### Python
@@ -34,3 +41,17 @@ Here is the pypi page of msat:
 Note that if you install msat from pip, you will not get benches here.
 
 ---
+
+### Run msat
+
+If you do not install the packages and script, just `cd` to the top directory:
+
+```sh
+$ ./ms
+```
+
+If you have already installed it, just type `ms`:
+
+```sh
+$ ms
+```
