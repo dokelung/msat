@@ -73,7 +73,9 @@ ms <cmd> [options or others]
 ```
 
 `ms` is the main script name.
+
 `cmd` is the msat command.
+
 `options and others` is options or target objects of the corresponding "cmd".
 
 ---
