@@ -74,7 +74,7 @@ ms <cmd> [options or others]
 
 `ms` is the main script name.<br />
 `cmd` is the msat command.<br />
-`options and others` is options or target objects of the corresponding "cmd".<br />
+`options and others` are options or target objects of the corresponding "cmd".<br />
 
 ---
 
