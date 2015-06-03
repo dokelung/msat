@@ -72,11 +72,9 @@ The format of ms command is:
 ms <cmd> [options or others]
 ```
 
-`ms` is the main script name.
-
-`cmd` is the msat command.
-
-`options and others` is options or target objects of the corresponding "cmd".
+`ms` is the main script name.<br />
+`cmd` is the msat command.<br />
+`options and others` is options or target objects of the corresponding "cmd".<br />
 
 ---
 
