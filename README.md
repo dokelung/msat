@@ -7,7 +7,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
  * [Python](#python)
 * [How to get msat](#how-to-get-msat)
 * [Run msat](#run-msat)
-
+* [List commands and get help](#list-commands-and-get-help)
 ===
 
 ### Environments
@@ -67,16 +67,26 @@ M-SAT:
 
 The format of ms command is:
 
-```
+```sh
 ms <cmd> [options or others]
 ```
 
-and we can use "cmd" to list all avalible commands:
+`ms` is the main script name.
+`cmd` is the msat command.
+`options and others` is options or target objects of the corresponding "cmd".
 
-```
+---
+
+### List commands and get help
+
+We can use "cmd" to list all avalible msat commands:
+
+```sh
 $ ms cmd
 cmd          : list all avalible commands and their short usage
 solve        : solve a mc problem
 set          : edit the settings.py
 help         : show the full infomation of a command
 ```
+
+---
