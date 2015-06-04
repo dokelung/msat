@@ -11,7 +11,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
 * [Solve a multiset constraint problem](#solve-a-multiset-constraint-problem)
  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
  * [Solve it](#solve-it)
- * [Log and log file](#log-messages-and-log-file)
+ * [Log and log file](#log-and-log-file)
 
 ===
 
@@ -194,6 +194,21 @@ Let's introduce the log of solving. Take above mc problem as example, the log is
 | % forbiden_combination_num: 0                                                                    |
 ====================================================================================================
 ```
+
+First, solver lists the basic info of the multiset constraint problem including the file's name, elements (and it's number), targets (and it's number) and the relation.
+
+Then the settings specified in the MC file are listed. Solver doesn't show the default settings in `settings.py`.
+
+The next block shows the info of MC table and MC dictionary including:
+* Table size: with the form of `row number X column number = table entry number`
+* Elements order: the order of elements for building the table and dictionary.
+* J-range min: this value is True if solver minimizes the column size.
+* Build Time: cost time for building the table and dictionary.
+
+When solving is finished, solver will show the satisfiability of this MC problem and the solving time.
+
+Finally, the profiling summary is given.
+
 
 
 
