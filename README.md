@@ -221,4 +221,32 @@ $ mc solve example.mc > example.log
 
 ### Settings
 
+We can modify the solver settings by modify the file `settings.py` in the module directory of `msat`.
+
+If msat is not installed by `pip` and user have the editor `vim`, we can use msat command set to help us:
+
+```
+$ ms set
+```
+
+Let me introduce all avalible solver settings to you.
+
+#### Solver display
+
+#### MC table
+
+#### Search
+
+#### Other constraint
+
+#### Judge satisfiability
+
+#### Early backtrack set
+
+#### Progress
+
+#### Profiling
+
+#### Debug
+
 ---
