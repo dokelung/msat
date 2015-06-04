@@ -161,34 +161,34 @@ Let's introduce the log of solving. Take above mc problem as example, the log is
 
 ```
 ====================================================================================================
-|                         MSAT - Multiset Constraint Solver for Multi-SAT                          | <-- Solver Title
+|                         MSAT - Multiset Constraint Solver for Multi-SAT                          |
 ====================================================================================================
 | % MC file             : test2.mc                                                                 |
-| % Elements (Num:37)   : [5, 6, 18, 44, 12, 3, 33, 11, 45, 7, 9, 8, 10, 8, 11, 32, 15,  ... more  | <-- Basic MC File Info
+| % Elements (Num:37)   : [5, 6, 18, 44, 12, 3, 33, 11, 45, 7, 9, 8, 10, 8, 11, 32, 15,  ... more  |
 | % Targets  (Num:21)   : [11, 74, 36, 56, 15, 9, 10, 8, 43, 15, 47, 2, 14, 12, 67, 79,  ... more  |
 | % Relation            : =                                                                        |
 ----------------------------------------------------------------------------------------------------
 |                                 Mc Settings specified in Mc File                                 |
----------------------------------------------------------------------------------------------------- <-- MC Settingsspecifie
-| S TARGETS_ORDER = 'increase'                   || S ELEMENTS_ORDER = 'increase'                  |     Specified in MC file
+----------------------------------------------------------------------------------------------------
+| S TARGETS_ORDER = 'increase'                   || S ELEMENTS_ORDER = 'increase'                  |
 | S PROGRESS = False                             ||                                                |
 ----------------------------------------------------------------------------------------------------
 |                                     MC Table & MC Dictionary                                     |
 ----------------------------------------------------------------------------------------------------
 | % Table Size          : 38*686 = 26068                                                           |
-| % Elements Order      : increase                                                                 | <-- MC Table and 
-| % J-range Min         : False                                                                    |     MC Dictionary Info
+| % Elements Order      : increase                                                                 | 
+| % J-range Min         : False                                                                    |
 | % Build Time          : 0.14224                                                                  |
 ----------------------------------------------------------------------------------------------------
 |                                   Multiset Constraint Solving                                    |
 ----------------------------------------------------------------------------------------------------
-| % Satisfiability      : False                                                                    | <-- Solving Result
+| % Satisfiability      : False                                                                    |
 | % Solving Time        : 0.00020                                                                  |
 ----------------------------------------------------------------------------------------------------
 |                                        Profiling Summary                                         |
 ----------------------------------------------------------------------------------------------------
 | % backtrack_num       : 1                                                                        |
-| % check_sum_fail_num  : 1                                                                        | <-- Profiling Summary
+| % check_sum_fail_num  : 1                                                                        |
 | % check_sum_comb_fail_num: 0                                                                     |
 | % check_distance_fail_num: 0                                                                     |
 | % forbiden_combination_num: 0                                                                    |
