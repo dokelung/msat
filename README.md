@@ -13,6 +13,13 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
  * [Solve it](#solve-it)
  * [Log and log file](#log-and-log-file)
 * [Settings](#settings)
+ * [Solver display(#solver-display)
+ * [MC table](#mc-table)
+ * [Search](#search)
+ * [Early backtrack check](#early-backtrack-check)
+ * [Progress](#progress)
+ * [Profiling](#profiling)
+ * [Debug](#debug)
 
 ===
 
