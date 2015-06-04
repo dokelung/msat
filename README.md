@@ -367,7 +367,7 @@ Turn on the progress param, user can get the solving progress like following:
 | % Table Size          : 89*8193 = 729177                                     |
 | % Elements Order      : increase                                             |
 | % J-range Min         : False                                                |
-| P Build MC Table      : [==============>                            ] 23.14 %|
+| P Build MC Table      : [=======>                                   ] 19.04 %|
 ```
 
 ##### Progress of searching solution space
