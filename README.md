@@ -233,6 +233,8 @@ Let me introduce all avalible solver settings to you.
 
 #### Solver display
 
+There are two width param for us to modify the size of log window.
+
 * SOLVER_WIDTH
  * width of solver window
  * is an even
@@ -242,41 +244,65 @@ Let me introduce all avalible solver settings to you.
  * is an integer
 
 ```python
-# solver display
 SOLVER_WIDTH = 80 # should be even
 SOLVER_ITEM_WIDTH = 20
 ```
 
-# mc
+#### MC table
+
+When solver constructs the MC table, it fix the orders of element set and target set first.
+
+* ELEMENTS_ORDER
+ * order of elements for building the MC table
+ * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'`
+ * for example, elements set = `(2, 4, 5, 1, 3)`
+  * use `increase` => elements list = `[1, 2, 3, 4, 5]`
+  * use `decrease` => elements list = `[5, 4, 3, 2, 1]`
+  * use `no`       => elements list = `[2, 4, 5, 1, 3]` (original order)
+
+* TARGETS_ORDER
+ * order of targets for building the MC table (it doesn't matter here)
+ * this order just affects the choose process
+ * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'` (the meaning just as `ELEMENTS_ORDER`)
+
+When building MC table, we could decide whether minize the column number of MC table. If the value is true, we could build a smaller MC table with less memory use and less building time. But set this value True can speed up the searching time when quering value of MC table.
+
+* JRANGE_MIN
+ * is a boolean value
+
+```python
 ELEMENTS_ORDER = 'increase' # increase/decrease/no
 TARGETS_ORDER = 'increase'  # increase/decrease/no
 JRANGE_MIN = False
+```
 
-# search
+#### Search
+
+```python
 CHOOSE_NOUSE_FIRST = False
 CHOOSE_FROM_MAX_OR_MIN = 'max' # max/min/no
+```
 
-# other constraint
+```python
 ALL_USE_RULE = False
+```
 
-# judge satifiability
+```python
 EARLY_CHECK_SATISFIABILITY = False
+```
 
-# early backtrack check
+```python
 CHECK_FOR_EARLY_BACKTRACK = True
 CHECK_SUM = True
 CHECK_SUM_COMB = True
 CHECK_SUM_COMB_NUM = 6
 CHECK_DISTANCES = True
 CHECK_FORBIDEN = True
+```
 
-# progress
+```python
 PROGRESS = False
-
-
-#### MC table
-
-#### Search
+```
 
 #### Other constraint
 
