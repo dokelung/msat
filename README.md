@@ -256,9 +256,9 @@ When solver constructs the MC table, it fix the orders of element set and target
  * order of elements for building the MC table
  * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'`
  * for example, elements set = `(2, 4, 5, 1, 3)`
-  * use `increase` => elements list = `[1, 2, 3, 4, 5]`
-  * use `decrease` => elements list = `[5, 4, 3, 2, 1]`
-  * use `no`       => elements list = `[2, 4, 5, 1, 3]` (original order)
+   * use `increase` => elements list = `[1, 2, 3, 4, 5]`
+   * use `decrease` => elements list = `[5, 4, 3, 2, 1]`
+   * use `no`       => elements list = `[2, 4, 5, 1, 3]` (original order)
 
 * TARGETS_ORDER
  * order of targets for building the MC table
@@ -288,9 +288,9 @@ When doing search, solver tries to choose a target (or choose nothing) picking r
  * let solver try to choose target with max(min) current value first
  * 3 strings are allowed: `'max'`, `'min'` and `'no'`
  * for example, current values of all targets are `[1, 2, 3, 4, 5]`
-  * use `max` => try to choose from 5 to 1
-  * use `min` => try to choose from 1 to 5
-  * use `no`  => use the original order for choosing
+   * use `max` => try to choose from 5 to 1
+   * use `min` => try to choose from 1 to 5
+   * use `no`  => use the original order for choosing
 
 ```python
 CHOOSE_NOUSE_FIRST = False
