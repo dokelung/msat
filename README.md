@@ -137,13 +137,14 @@ s TARGETS_ORDER = 'increase'  # increase/decrease/no
 ```
 
 It is a standard-format file of a multiset constraint problem.<br />
-User should use `e`, `t`, `r`, `s`, and `#` as the first non-blank char of a line.<br />
-We call these chars as "line keyword".<br />
-keyword `e` is used to specify elements (element set).<br />
-Keyword `t` is used to specify targets (target set).<br />
-Keyword `r` is used to specify the relation between multi-subset and its corresponding target.
-Keyword `s` is used to do solver settings for a specific multiset constraint problem.<br />
-Finally, `#` is used to write down comments.
+User should use `e`, `t`, `r`, `s`, and `#` as the first non-blank char of a line.
+
+We call these chars as "line keyword":
+* keyword `e` is used to specify elements (element set).<br />
+* Keyword `t` is used to specify targets (target set).<br />
+* Keyword `r` is used to specify the relation between multi-subset and its corresponding target.
+* Keyword `s` is used to do solver settings for a specific multiset constraint problem.
+* Keyword, `#` is used to write down comments.
 
 Note that we could use multiple "e lines" and "t lines" to describe element set and target set respectively. Also, the setting statements are allowed with comment.
 
