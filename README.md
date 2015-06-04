@@ -392,6 +392,44 @@ PROGRESS = False
 
 #### Profiling
 
+```python
+PROFILING_VARS = (
+    'backtrack_num',
+    'check_sum_fail_num',
+    'check_sum_comb_fail_num',
+    'check_distance_fail_num',
+    'forbiden_combination_num'
+)
+
+PROFILING_COUNT = True
+PROFILING_SUMMARY = True
+```
+
 #### Debug
+
+Here are some debug params:
+
+* DEBUG_TITLE
+ * turn on for printing debug title
+ * is a boolean value
+
+* DEBUG_MSG
+ * turn on for printing debug message
+ * is a boolean value
+
+* DEBUG_INTERUPT
+ * turn on for doing search step by step (action by action)
+ * is a boolean value
+
+* DEBUG_SHOW_SEARCH_STATUS
+ * turn on for printing search status for each search action
+ * is a boolean value
+
+```python
+DEBUG_TITLE = False
+DEBUG_MSG = False
+DEBUG_INTERUPT = False
+DEBUG_SHOW_SEARCH_STATUS = False
+```
 
 ---
