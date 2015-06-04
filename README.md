@@ -145,10 +145,56 @@ Keyword `r` is used to specify the relation between multi-subset and its corresp
 Keyword `s` is used to do solver settings for a specific multiset constraint problem.<br />
 Finally, `#` is used to write down comments.
 
-Note that we could use multiple "e lines" or "t lines" to describe an element set and target set respectively and the setting statements are also allowed with comment.
+Note that we could use multiple "e lines" and "t lines" to describe element set and target set respectively. Also, the setting statements are allowed with comment.
 
 #### Solve it
 
+Solve a multiset constraint file (mc file) is easy. Use command `solve`:
+
+```
+$ ms solve example.mc
+```
+
 #### Log and log file
+
+Let's introduce the log of solving. Take above mc problem as example, the log is like following:
+
+```
+====================================================================================================
+|                         MSAT - Multiset Constraint Solver for Multi-SAT                          | <-- Solver Title
+====================================================================================================
+| % MC file             : test2.mc                                                                 |
+| % Elements (Num:37)   : [5, 6, 18, 44, 12, 3, 33, 11, 45, 7, 9, 8, 10, 8, 11, 32, 15,  ... more  | <-- Basic MC File Info
+| % Targets  (Num:21)   : [11, 74, 36, 56, 15, 9, 10, 8, 43, 15, 47, 2, 14, 12, 67, 79,  ... more  |
+| % Relation            : =                                                                        |
+----------------------------------------------------------------------------------------------------
+|                                 Mc Settings specified in Mc File                                 |
+---------------------------------------------------------------------------------------------------- <-- MC Settingsspecifie
+| S TARGETS_ORDER = 'increase'                   || S ELEMENTS_ORDER = 'increase'                  |     Specified in MC file
+| S PROGRESS = False                             ||                                                |
+----------------------------------------------------------------------------------------------------
+|                                     MC Table & MC Dictionary                                     |
+----------------------------------------------------------------------------------------------------
+| % Table Size          : 38*686 = 26068                                                           |
+| % Elements Order      : increase                                                                 | <-- MC Table and 
+| % J-range Min         : False                                                                    |     MC Dictionary Info
+| % Build Time          : 0.14224                                                                  |
+----------------------------------------------------------------------------------------------------
+|                                   Multiset Constraint Solving                                    |
+----------------------------------------------------------------------------------------------------
+| % Satisfiability      : False                                                                    | <-- Solving Result
+| % Solving Time        : 0.00020                                                                  |
+----------------------------------------------------------------------------------------------------
+|                                        Profiling Summary                                         |
+----------------------------------------------------------------------------------------------------
+| % backtrack_num       : 1                                                                        |
+| % check_sum_fail_num  : 1                                                                        | <-- Profiling Summary
+| % check_sum_comb_fail_num: 0                                                                     |
+| % check_distance_fail_num: 0                                                                     |
+| % forbiden_combination_num: 0                                                                    |
+====================================================================================================
+```
+
+
 
 ---
