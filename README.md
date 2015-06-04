@@ -241,7 +241,7 @@ There are two width param for us to modify the size of log window.
 
 * SOLVER_ITEM_WIDTH
  * width of an item name like "Table Size" or "Satisfiability"
- * is an integer
+ * is an positive integer
 
 ```python
 SOLVER_WIDTH = 80 # should be even
@@ -320,6 +320,31 @@ EARLY_CHECK_SATISFIABILITY = False
 
 There are several additional check for early backtrack.
 
+* CHECK_FOR_EARLY_BACKTRACK
+ * turn off this param blocks all kinds of early backtrack check
+ * is a boolean value
+
+* CHECK_SUM
+ * check sum of current values of all targets in each level
+ * is a boolean value
+
+* CHECK_SUM_COMB
+ * check sum of current values of targets in several combination in each level
+ * the size of each combination is specified by param `CHECK_SUM_COMB_NUM`
+ * is a boolean value
+
+* CHECK_SUM_COMB_NUM
+ * check sum of current values of several targets in each level
+ * is a positive integer which is greater than 1
+
+* CHECK_DISTANCES
+ * check the distances between current targets and first False value they will encounter
+ * is a boolean value
+
+* CHECK_FORBIDEN
+ * check whether the current target set is a forbiden combination 
+ * is a boolean value
+
 ```python
 CHECK_FOR_EARLY_BACKTRACK = True
 CHECK_SUM = True
@@ -330,6 +355,36 @@ CHECK_FORBIDEN = True
 ```
 
 #### Progress
+
+Turn on the progress param, user can get the solving progress like following:
+
+##### Progress of building MC table
+
+```
+--------------------------------------------------------------------------------
+|                           MC Table & MC Dictionary                           |
+--------------------------------------------------------------------------------
+| % Table Size          : 89*8193 = 729177                                     |
+| % Elements Order      : increase                                             |
+| % J-range Min         : False                                                |
+| P Build MC Table      : [==============>                            ] 23.14 %|
+```
+
+##### Progress of searching solution space
+
+This progress does'nt point out the solving progress, just tells us the traversed percentage of the solution space.
+
+```
+--------------------------------------------------------------------------------
+|                         Multiset Constraint Solving                          |
+--------------------------------------------------------------------------------
+| P Search Sol Space    : [>                                          ] 0.00  %|
+```
+
+* PROGRESS
+ * turn on this param for getting the solving progress
+ * it cost much times
+ * is a boolean value
 
 ```python
 PROGRESS = False
