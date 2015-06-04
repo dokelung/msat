@@ -12,6 +12,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
  * [Solve it](#solve-it)
  * [Log and log file](#log-and-log-file)
+* [Settings](#settings)
 
 ===
 
@@ -210,7 +211,14 @@ When solving is finished, solver will show the satisfiability of this MC problem
 
 Finally, the profiling summary is given.
 
+If you want to dump the log in to a file, just use redirection:
 
+```sh
+$ mc solve example.mc > example.log
+```
 
+---
+
+### Settings
 
 ---
