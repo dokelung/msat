@@ -392,6 +392,27 @@ PROGRESS = False
 
 #### Profiling
 
+We could use `PROFILING_COUNT` to do the counting for profiling, and `PROFILING_SUMMARY` let solver print the result of profiling.
+
+* PROFILING_COUNT
+ * do the counting for profiling
+ * is a boolean value
+
+* PROFILING_SUMMARY
+ * let solver print the result of profiling
+ * only list the variables specified in tuple param `PROFILING_VARS`
+ * is a boolean value
+ 
+* PROFILING_VARS
+ * specify the variables shown in the profiling summary
+ * is string tuple
+ * solver supports 5 vars now including:
+    * 'backtrack_num'
+    * 'check_sum_fail_num'
+    * 'check_sum_comb_fail_num'
+    * 'check_distance_fail_num'
+    * 'forbiden_combination_num'
+
 ```python
 PROFILING_VARS = (
     'backtrack_num',
