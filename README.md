@@ -233,6 +233,47 @@ Let me introduce all avalible solver settings to you.
 
 #### Solver display
 
+* SOLVER_WIDTH
+ * width of solver window
+ * is an even
+
+* SOLVER_ITEM_WIDTH
+ * width of an item name like "Table Size" or "Satisfiability"
+ * is an integer
+
+```python
+# solver display
+SOLVER_WIDTH = 80 # should be even
+SOLVER_ITEM_WIDTH = 20
+```
+
+# mc
+ELEMENTS_ORDER = 'increase' # increase/decrease/no
+TARGETS_ORDER = 'increase'  # increase/decrease/no
+JRANGE_MIN = False
+
+# search
+CHOOSE_NOUSE_FIRST = False
+CHOOSE_FROM_MAX_OR_MIN = 'max' # max/min/no
+
+# other constraint
+ALL_USE_RULE = False
+
+# judge satifiability
+EARLY_CHECK_SATISFIABILITY = False
+
+# early backtrack check
+CHECK_FOR_EARLY_BACKTRACK = True
+CHECK_SUM = True
+CHECK_SUM_COMB = True
+CHECK_SUM_COMB_NUM = 6
+CHECK_DISTANCES = True
+CHECK_FORBIDEN = True
+
+# progress
+PROGRESS = False
+
+
 #### MC table
 
 #### Search
