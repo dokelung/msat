@@ -261,7 +261,7 @@ When solver constructs the MC table, it fix the orders of element set and target
   * use `no`       => elements list = `[2, 4, 5, 1, 3]` (original order)
 
 * TARGETS_ORDER
- * order of targets for building the MC table (it doesn't matter here)
+ * order of targets for building the MC table
  * this order just affects the choose process
  * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'` (the meaning just as `ELEMENTS_ORDER`)
 
@@ -278,10 +278,26 @@ JRANGE_MIN = False
 
 #### Search
 
+When doing search, solver tries to choose a target (or choose nothing) picking row element in each level. The strategy of choose can decided by user.
+
+* CHOOSE_NOUSE_FIRST
+ * let solver try to choose nothing first
+ * is a boolean value
+ 
+* CHOOSE_FROM_MAX_OR_MIN
+ * let solver try to choose target with max(min) current value first
+ * 3 strings are allowed: `'max'`, `'min'` and `'no'`
+ * for example, current values of all targets are `[1, 2, 3, 4, 5]`
+  * use `max` => try to choose from 5 to 1
+  * use `min` => try to choose from 1 to 5
+  * use `no`  => use the original order for choosing
+
 ```python
 CHOOSE_NOUSE_FIRST = False
 CHOOSE_FROM_MAX_OR_MIN = 'max' # max/min/no
 ```
+
+#### Other constraint
 
 ```python
 ALL_USE_RULE = False
@@ -303,8 +319,6 @@ CHECK_FORBIDEN = True
 ```python
 PROGRESS = False
 ```
-
-#### Other constraint
 
 #### Judge satisfiability
 
