@@ -284,6 +284,8 @@ JRANGE_MIN = False
 
 #### Search
 
+We call the solving process of traveling in the solution space "search". There are many strategy we could use in this stage. Sometimes modifying a param results in a big variation of solving time.
+
 When doing search, solver tries to choose a target (or choose nothing) picking row element in each level. The strategy of choose can decided by user.
 
 * CHOOSE_NOUSE_FIRST
@@ -322,9 +324,7 @@ Search process finishes when solver propagates to the first row of MC table defa
 ```python
 EARLY_CHECK_SATISFIABILITY = False
 ```
-
-##### Early backtrack check
-
+When doing search, we can by early backtrack checking.
 There are several additional check for early backtrack.
 
 * CHECK_FOR_EARLY_BACKTRACK
