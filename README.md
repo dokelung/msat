@@ -324,7 +324,7 @@ Search process finishes when solver propagates to the first row of MC table defa
 ```python
 EARLY_CHECK_SATISFIABILITY = False
 ```
-When doing search, we can by early backtrack checking.
+When doing search, we can do a early backtracking by early backtrack checking (find the conflict in early time).
 There are several additional check for early backtrack.
 
 * CHECK_FOR_EARLY_BACKTRACK
