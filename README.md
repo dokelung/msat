@@ -16,7 +16,6 @@ Multiset Constraint Solver for Multi-SAT (Version-1.1)
  * [Solver display](#solver-display)
  * [MC table](#mc-table)
  * [Search](#search)
- * [Early backtrack check](#early-backtrack-check)
  * [Progress](#progress)
  * [Profiling](#profiling)
  * [Debug](#debug)
@@ -323,7 +322,8 @@ Search process finishes when solver propagates to the first row of MC table defa
 ```python
 EARLY_CHECK_SATISFIABILITY = False
 ```
-#### Early backtrack check
+
+##### Early backtrack check
 
 There are several additional check for early backtrack.
 
