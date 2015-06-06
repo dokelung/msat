@@ -1,7 +1,7 @@
 msat
 ======
 
-Multiset Constraint Solver for Multi-SAT (Version-1.2)
+Multiset Constraint Solver for Multi-SAT (Version-1.2.1)
 
 * [Environments](#environments)
  * [Python](#python)
