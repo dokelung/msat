@@ -21,6 +21,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.2)
  * [Progress](#progress)
  * [Profiling](#profiling)
  * [Debug](#debug)
+ * [Intelligent setting](#intelligent-setting)
 
 ===
 
@@ -262,12 +263,12 @@ $ ms solve example.mc -o Myresult
 
 ### Settings
 
-We can modify the solver settings by modify the file `settings.py` in the module directory of `msat`.
+We can modify the solver settings by editing `settings.py` in msat module directory or `local_settings.py` in the current directory. Of course, user can specifiy the problem-concerned settings in MC file for specific MC problem.
 
-If msat is not installed by `pip` and user have the editor `vim`, we can use msat command set to help us:
+Note that the settings in MC file cover the settings in `local_settings.py` and the settings in `local_settings.py` cover the settings in `settings.py`. If you want to know the differences between `settings.py` and `loca_settings.py`, use command `setdiff` to help us:
 
-```
-$ ms set
+```sh
+$ ms setdiff
 ```
 
 Let me introduce all avalible solver settings to you.
