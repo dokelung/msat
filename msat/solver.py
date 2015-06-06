@@ -47,9 +47,9 @@ class Layer:
     def getPickedTarget(self):
         return self.picked_target
 
-    def setCandidates(self, targets, should_use=settings.ALL_USE_RULE):
+    def setCandidates(self, targets, should_use=False):
         if not settings.CHOOSE_NOUSE_FIRST:
-            if not should_use:
+            if not settings.ALL_USE_RULE and not should_use:
                 self.candidates.append('no')
 
         values = set()
@@ -61,7 +61,8 @@ class Layer:
                 self.candidates.append(target)
 
         if settings.CHOOSE_NOUSE_FIRST:
-            self.candidates.append('no')
+            if not settings.ALL_USE_RULE and not should_use:
+                self.candidates.append('no')
 
     def pickNextTarget(self):
         try:
@@ -167,7 +168,6 @@ class Solver:
     def solve(self):
 
         debug_title('Search process')
-        
         
         self.total_count = (len(self.mc.targets)+1) ** len(self.mc.elements)
         if settings.PROGRESS:

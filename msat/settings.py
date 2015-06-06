@@ -1,8 +1,8 @@
 # solver display
-SOLVER_WIDTH = 100 # should be even
+SOLVER_WIDTH = 80 # should be even
 SOLVER_ITEM_WIDTH = 20 
 
-# mc
+# mc table
 ELEMENTS_ORDER = 'increase' # increase/decrease/no
 TARGETS_ORDER = 'increase'  # increase/decrease/no
 JRANGE_MIN = False
@@ -11,13 +11,10 @@ JRANGE_MIN = False
 CHOOSE_NOUSE_FIRST = False
 CHOOSE_FROM_MAX_OR_MIN = 'max' # max/min/no
 
-# other constraint
 ALL_USE_RULE = False
 
-# judge satifiability
 EARLY_CHECK_SATISFIABILITY = False
 
-# early backtrack check
 CHECK_FOR_EARLY_BACKTRACK = True
 CHECK_SUM = True
 CHECK_SUM_COMB = True
@@ -39,6 +36,9 @@ PROFILING_VARS = (
 
 PROFILING_COUNT = True
 PROFILING_SUMMARY = True
+
+# result
+OUTPUT_SUBSET = True
 
 # debug 
 DEBUG_TITLE = False

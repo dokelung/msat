@@ -21,7 +21,7 @@ class ProgressBar:
 
         sys.stdout.write(progress_str.format(
             title=self.title,
-            bar='='*int(progress*62)+'>',
+            bar='='*int(progress*(settings.SOLVER_WIDTH-18-settings.SOLVER_ITEM_WIDTH))+'>',
             progress=progress*100)
         )
         

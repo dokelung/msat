@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import types
+import json
 from msat import mc, solver, settings, profiling
 from msat.reporter import *
 
@@ -15,11 +16,27 @@ def cmd_cmd():
         cmd
     """
     cmds = [item for item in globals() if item[0:4]=='cmd_']
+    cmds.sort()
+    print('CMD:')
     for cmd in cmds:
         docstr = globals()[cmd].__doc__
         docstr = docstr.strip().split('\n')[0]
         docstr = docstr.split(':')[1].strip()
-        print('{cmd:<12} : {docstr}'.format(cmd=cmd.split('_')[1], docstr=docstr))
+        print('    {cmd:<12} : {docstr}'.format(cmd=cmd.split('_')[1], docstr=docstr))
+
+def cmd_configure():
+    """
+    USAGE: setting enviroments
+    SYNOPSIS:
+        configure 
+    """
+    with open('local_settings.py', 'w') as writer:
+        for setting in dir(settings):
+            if not setting[0]=='_':
+                value = eval('settings.'+setting)
+                if isinstance(value, str):
+                    value = "'" + value + "'"
+                print(setting, '=', value, file=writer)
 
 def cmd_help(command):
     """
@@ -29,22 +46,56 @@ def cmd_help(command):
     """
     print(globals()['cmd_'+command].__doc__)
 
-def cmd_set():
+def cmd_setdiff():
     """
-    USAGE: edit the settings.py
+    USAGE: diff the default settings and the local settings
     SYNOPSIS:
-        set
+        setdiff
     """
-    os.system('vim ./msat/settings.py')
+    with open('local_settings.py', 'r') as reader:
+        for line in reader:
+            setting = line.strip()
+            var, value = setting.split('=')
+            var = var.strip()
+            value = value.strip()
+            value = value.split('#')[0].strip()
+            if var in dir(settings):
+                old_value = eval('settings.'+var)
+                exec('settings.'+setting)
+                new_value = eval('settings.'+var)
+                if not old_value==new_value:
+                    print('M', var, '=', new_value)
+            else:
+                print('Error: unavalible settings -> ' + setting)
 
-def cmd_solve():
+def cmd_solve(options):
     """
     USAGE: solve a mc problem
     SYNOPSIS:
-        solve [option] <mc file>
-    OPTION:
+        solve [-i] <mc file> [-o <result file>]
+    OPTIONS:
+        -i : intelligent setting
+        -o : result file name
     """
+    with open('local_settings.py', 'r') as reader:
+        for line in reader:
+            setting = line.strip()
+            var, value = setting.split('=')
+            var = var.strip()
+            value = value.strip()
+            value = value.split('#')[0].strip()
+            if var in dir(settings):
+                exec('settings.'+setting)
+            else:
+                print('Error: unavalible settings -> ' + setting)
+
     mc_file = argv[2]
+    
+    if 'o' in options:
+        result_file = argv[3]
+    else:
+        result_file = mc_file + '.result'
+
     elements = []
     targets = []
     relation = None 
@@ -77,6 +128,25 @@ def cmd_solve():
                         print('Error: unavalible settings -> ' + setting)
         except:
             print('Error: Mc file format')
+
+    # Intelligent setting
+
+    if 'i' in options:
+
+        if sum(elements)==sum(targets) and relation in ['=', '>=']:
+            settings.ALL_USE_RULE = True
+            mc_settings.append(' I ALL_USE_RULE = True')
+            
+        if relation in ['>', '>=']:
+            settings.ELEMENTS_ORDER = 'increase'
+            settings.CHOOSE_FROM_MAX_OR_MIN = 'max'
+            mc_settings.append(' I ELEMENTS_ORDER = increase')
+            mc_settings.append(' I CHOOSE_FROM_MAX_OR_MIN = max')
+        elif relation=='=':
+            settings.ELEMENTS_ORDER = 'increase'
+            settings.CHOOSE_FROM_MAX_OR_MIN = 'min'
+            mc_settings.append(' I ELEMENTS_ORDER = increase')
+            mc_settings.append(' I CHOOSE_FROM_MAX_OR_MIN = min')
     
     # Run
     
@@ -90,7 +160,7 @@ def cmd_solve():
     print(getLine())
     
     if mc_settings:
-        print(getTitle('Mc Settings specified in Mc File'))
+        print(getTitle('Mc Settings Specified in Mc File and Intelligent Setting'))
         print(getLine())
         while True:
             s1 = mc_settings.pop() if len(mc_settings)>0 else ''
@@ -134,41 +204,57 @@ def cmd_solve():
     print(getLine())
     t3 = time.time()
     mc_solver = solver.Solver(mcp)
-    t4 = time.time()
     mc_solver.solve()
+    t4 = time.time()
     solution_space = (len(targets)+1)**len(elements)
     print(getItem('Satisfiability', mc_solver.getSatisfiability()))
     print(getItem('Solving Time', '{0:.5f}'.format(t4-t3)))
     profiling.profiling_summary()
     print(getLine(True))
 
+    # output results
+
+    result_lst = [{'target':target.getValue(), 'elements':target.getPickedElements()} for target in mc_solver.targets]
+
+    if settings.OUTPUT_SUBSET and mc_solver.getSatisfiability():
+        with open(result_file, 'w') as writer:
+            print(json.dumps(result_lst, indent=2, separators=(',', ':')), file=writer)
+
 argv = sys.argv[:]
 
 if __name__ == '__main__':
-    option = []
+
+    options = []
     for arg in argv:
         if '-' in arg:
-            option.append(arg)
+            options.append(arg)
             argv.remove(arg)
+
+    options = [option.strip('-') for option in options]
+
     try:
         cmd = argv[1]
         if cmd == 'cmd':
             cmd_cmd()
+        elif cmd == 'configure':
+            cmd_configure()
         elif cmd == 'help':
             try:
                 obj = argv[2]
                 cmd_help(obj)
             except:
                 print('Please use "help [command]" to get the usage of command')
-        elif cmd == 'set':
-            cmd_set()
+        elif cmd == 'setdiff':
+            cmd_setdiff()
         elif cmd == 'solve':
-            cmd_solve()
+            cmd_solve(options)
         else:
             print('Error: unavalible command : '+cmd)
             print('Please use "cmd" to list all avalible commands')
     except:
-        print('M-SAT:')
-        print('    python3 ms <cmd> [options or others]')
-        print('          ./ms <cmd> [options or others]')
-        print('    Please use "cmd" to list all avalible commands')
+        print('msat:')
+        print('    python3 ms <CMD> [OBJECTS & OPTIONS]')
+        print('            ms <CMD> [OBJECTS & OPTIONS]')
+        print('          ./ms <CMD> [OBJECTS & OPTIONS]')
+        print('    If this is your first use, please run configure!')
+        cmd_cmd()
