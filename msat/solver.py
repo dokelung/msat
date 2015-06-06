@@ -54,8 +54,9 @@ class Layer:
 
         values = set()
         for target in targets:
-            if eval(str(target.getCurrentValue())+self.mc.getAllTrueRegion()):
-                continue
+            if not settings.ALL_USE_RULE:
+                if eval(str(target.getCurrentValue())+self.mc.getAllTrueRegion()):
+                    continue
             if not target.getCurrentValue() in values:
                 values.add(target.getCurrentValue())
                 self.candidates.append(target)
