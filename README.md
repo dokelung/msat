@@ -20,6 +20,7 @@ Multiset Constraint Solver for Multi-SAT (Version-1.2)
  * [Search](#search)
  * [Progress](#progress)
  * [Profiling](#profiling)
+ * [Output subset](#output-subset)
  * [Debug](#debug)
  * [Intelligent setting](#intelligent-setting)
 
@@ -468,6 +469,12 @@ PROFILING_VARS = (
 PROFILING_COUNT = True
 PROFILING_SUMMARY = True
 ```
+
+#### Output subset
+
+* OUTPUT SUBSET
+ * turn on for outputing the result file when satisfiability is True
+ * is a boolean value
 
 #### Debug
 
