@@ -254,7 +254,28 @@ $ ms solve example.mc > example.log
 
 If this mc problem is SAT(satisfiable). That means solver finds several suitable multi-subsets that can satisfy all of the targets. So solver writes down the result for showing detail. This result is named `<mc file name>.result`. For example, the result file name of "example.mc" is "example.mc.result".
 
-User can specify the name of result by using `-o` option:
+Result file is a json file:
+
+```
+[
+  {
+    "elements":[
+      3,  
+      1   
+    ],  
+    "target":4
+  },  
+  {
+    "elements":[
+      3,  
+      1   
+    ],  
+    "target":4
+  }
+]
+```
+
+User can specify the name of result file by using `-o` option:
 
 ```sh
 $ ms solve example.mc -o Myresult
@@ -475,6 +496,10 @@ PROFILING_SUMMARY = True
 * OUTPUT SUBSET
  * turn on for outputing the result file when satisfiability is True
  * is a boolean value
+
+```python
+OUTPUT_SUBSET = True
+```
 
 #### Debug
 
