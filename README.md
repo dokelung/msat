@@ -8,10 +8,12 @@ Multiset Constraint Solver for Multi-SAT (Version-1.2)
 * [How to get msat](#how-to-get-msat)
 * [Run msat](#run-msat)
 * [List commands and get help](#list-commands-and-get-help)
+* [configure](#configure)
 * [Solve a multiset constraint problem](#solve-a-multiset-constraint-problem)
  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
  * [Solve it](#solve-it)
  * [Log and log file](#log-and-log-file)
+ * [Result file](#result-file)
 * [Settings](#settings)
  * [Solver display](#solver-display)
  * [MC table](#mc-table)
@@ -71,21 +73,28 @@ $ ms
 You will see following info:
 
 ```sh
-M-SAT:
-    python3 ms <cmd> [options or others]
-          ./ms <cmd> [options or others]
-    Please use "cmd" to list all avalible commands
+msat:
+    python3 ms <CMD> [OBJECTS & OPTIONS]
+            ms <CMD> [OBJECTS & OPTIONS]
+          ./ms <CMD> [OBJECTS & OPTIONS]
+    If this is your first use, please run configure!
+CMD:
+    cmd          : list all avalible commands and their short usage
+    configure    : setting enviroments
+    help         : show the full infomation of a command
+    setdiff      : diff the default settings and the local settings
+    solve        : solve a mc problem
 ```
 
 The format of ms command is:
 
 ```sh
-ms <cmd> [options or others]
+ms <CMD> [OBJECTS & OPTIONS]
 ```
 
 `ms` is the main script name.<br />
-`cmd` is the msat command.<br />
-`options and others` are options or target objects of the corresponding "cmd".<br />
+`CMD` is the msat command.<br />
+`OBJECTS & OPTIONS` are options or target objects of the corresponding "CMD".<br />
 
 ---
 
@@ -94,11 +103,12 @@ ms <cmd> [options or others]
 We can use "cmd" to list all avalible msat commands:
 
 ```
-$ ms cmd
-cmd          : list all avalible commands and their short usage
-solve        : solve a mc problem
-set          : edit the settings.py
-help         : show the full infomation of a command
+CMD:
+    cmd          : list all avalible commands and their short usage
+    configure    : setting enviroments
+    help         : show the full infomation of a command
+    setdiff      : diff the default settings and the local settings
+    solve        : solve a mc problem
 ```
 
 If we want to know the details of a specific command, just use msat command `help`:
@@ -108,18 +118,33 @@ $ ms help solve
 
     USAGE: solve a mc problem
     SYNOPSIS:
-        solve [option] <mc file>
-    OPTION:
+        solve [-i] <mc file> [-o <result file>]
+    OPTIONS:
+        -i : intelligent setting
+        -o : result file name
 ```
 
 `USAGE` gives a brief description of this command.<br />
 `SYNOPSIS` gives the format of this command.<br />
+`OPTIONS` gives descriptions of all avalible options.
 
 For example, if you want to use command `solve` for solving a multiset constraint problem (written in standard mc file format named example.mc) with default settings (that means you don't need to use any options), just type:
 
 ```
 $ ms solve example.mc
 ```
+
+Note that, if there is nothing happeded, please run configure first!
+
+### Configure
+
+If this is your first use, please run configure!
+
+```
+$ ms configure
+```
+
+You will see `local_settings.py` in your current directory. Congrats! Configure is succesful! Now the `solve` command is avalible in this directory.
 
 ---
 
@@ -171,7 +196,7 @@ Let's introduce the log of solving. Take above mc problem as example, the log is
 ================================================================================
 |               MSAT - Multiset Constraint Solver for Multi-SAT                |
 ================================================================================
-| % MC file             : test2.mc                                             |
+| % MC file             : example.mc                                             |
 | % Elements (Num:37)   : [5, 6, 18, 44, 12, 3, 33, 11, 45, 7, 9, 8, ... more  |
 | % Targets  (Num:21)   : [11, 74, 36, 56, 15, 9, 10, 8, 43, 15, 47, ... more  |
 | % Relation            : =                                                    |
@@ -181,7 +206,7 @@ Let's introduce the log of solving. Take above mc problem as example, the log is
 | S TARGETS_ORDER = 'increase'         || S ELEMENTS_ORDER = 'increase'        |
 | S PROGRESS = False                   ||                                      |
 --------------------------------------------------------------------------------
-|                           MC Table & MC Dictionary                           |
+|             Mc Settings Specified in Mc File and Intelligent Setting         |
 --------------------------------------------------------------------------------
 | % Table Size          : 38*686 = 26068                                       |
 | % Elements Order      : increase                                             |
@@ -220,7 +245,17 @@ Finally, the profiling summary is given.
 If you want to dump the log in to a file, just use redirection:
 
 ```sh
-$ mc solve example.mc > example.log
+$ ms solve example.mc > example.log
+```
+
+#### Result file
+
+If this mc problem is SAT(satisfiable). That means solver finds several suitable multi-subsets that can satisfy all of the targets. So solver writes down the result for showing detail. This result is named `<mc file name>.result`. For example, the result file name of "example.mc" is "example.mc.result".
+
+User can specify the name of result by using `-o` option:
+
+```sh
+$ ms solve example.mc -o Myresult
 ```
 
 ---
@@ -459,5 +494,26 @@ DEBUG_MSG = False
 DEBUG_INTERUPT = False
 DEBUG_SHOW_SEARCH_STATUS = False
 ```
+
+#### Intelligent Setting
+
+Different MC problems have their unique properties. And solver settings really affects the solving efficiency according to these properties. Intelligent setting is a building feature of msat! Let msat decide the final settings to help you solving the problem more efficiently. Just use `-i` option with command `solve`:
+
+```
+$ ms solve -i example.mc
+```
+
+and intelligent settings will be listed in the log file:
+
+```
+--------------------------------------------------------------------------------
+|           Mc Settings Specified in Mc File and Intelligent Setting           |
+--------------------------------------------------------------------------------
+| I CHOOSE_FROM_MAX_OR_MIN = min       || I ELEMENTS_ORDER = increase          |
+| S TARGETS_ORDER = 'increase'         || S ELEMENTS_ORDER = 'increase'        |
+| S PROGRESS = False                   ||                                      |
+```
+
+ The items starts with 'I' are the intelligent settings.
 
 ---
