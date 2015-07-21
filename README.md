@@ -1,5 +1,6 @@
 msat
 ======
+![123](https://img.shields.io/pypi/v/msat.svg)
 
 Multiset Constraint Solver for Multi-SAT (Version-1.2.1)
 
@@ -198,7 +199,7 @@ Let's introduce the log of solving. Take above mc problem as example, the log is
 ================================================================================
 |               MSAT - Multiset Constraint Solver for Multi-SAT                |
 ================================================================================
-| % MC file             : example.mc                                             |
+| % MC file             : example.mc                                           |
 | % Elements (Num:37)   : [5, 6, 18, 44, 12, 3, 33, 11, 45, 7, 9, 8, ... more  |
 | % Targets  (Num:21)   : [11, 74, 36, 56, 15, 9, 10, 8, 43, 15, 47, ... more  |
 | % Relation            : =                                                    |
