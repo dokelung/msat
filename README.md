@@ -1,5 +1,6 @@
 msat
 ======
+|Build| |Coverage| |Pypi version| |Pypi downloads|
 ![](https://img.shields.io/pypi/v/msat.svg)
 
 * [Environments](#environments)
