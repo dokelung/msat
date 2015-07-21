@@ -1,6 +1,6 @@
 msat
 ======
-![https://img.shields.io/pypi/v/msat.svg](https://pypi.python.org/pypi/leetehao)
+![https://pypi.python.org/pypi/msat](https://img.shields.io/pypi/v/msat.svg)
 
 Multiset Constraint Solver for Multi-SAT (Version-1.2.1)
 
