@@ -1,7 +1,7 @@
 msat
 ======
 ![](https://img.shields.io/pypi/v/msat.svg)
-![](image:: https://img.shields.io/pypi/dm/pypinyin.svg)
+![](https://img.shields.io/pypi/dm/pypinyin.svg)
 
 * [Environments](#environments)
  * [Python](#python)
