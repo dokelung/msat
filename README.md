@@ -4,27 +4,27 @@ msat
 ![](https://img.shields.io/pypi/dm/msat.svg)
 
 * [Environments](#environments)
- * [Python](#python)
+  * [Python](#python)
 * [How to get msat](#how-to-get-msat)
 * [Run msat](#run-msat)
 * [List commands and get help](#list-commands-and-get-help)
 * [configure](#configure)
 * [Solve a multiset constraint problem](#solve-a-multiset-constraint-problem)
- * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
- * [Solve it](#solve-it)
- * [Log and log file](#log-and-log-file)
- * [Result file](#result-file)
+  * [Standard file format of multiset constraint problem](#standard-file-format-of-multiset-constraint-problem)
+  * [Solve it](#solve-it)
+  * [Log and log file](#log-and-log-file)
+  * [Result file](#result-file)
 * [Settings](#settings)
- * [Solver display](#solver-display)
- * [MC table](#mc-table)
- * [Search](#search)
- * [Progress](#progress)
- * [Profiling](#profiling)
- * [Output subset](#output-subset)
- * [Debug](#debug)
- * [Intelligent setting](#intelligent-setting)
+  * [Solver display](#solver-display)
+  * [MC table](#mc-table)
+  * [Search](#search)
+  * [Progress](#progress)
+  * [Profiling](#profiling)
+  * [Output subset](#output-subset)
+  * [Debug](#debug)
+  * [Intelligent setting](#intelligent-setting)
 
-===
+=====
 
 ### Environments
 
@@ -174,11 +174,11 @@ It is a standard-format file of a multiset constraint problem.<br />
 User should use `e`, `t`, `r`, `s`, and `#` as the first non-blank char of a line.
 
 We call these chars as "line keyword":
-* keyword `e` is used to specify elements (element set).<br />
-* Keyword `t` is used to specify targets (target set).<br />
-* Keyword `r` is used to specify the relation between multi-subset and its corresponding target.
-* Keyword `s` is used to do solver settings for a specific multiset constraint problem.
-* Keyword, `#` is used to write down comments.
+ * keyword `e` is used to specify elements (element set).<br />
+ * Keyword `t` is used to specify targets (target set).<br />
+ * Keyword `r` is used to specify the relation between multi-subset and its corresponding target.
+ * Keyword `s` is used to do solver settings for a specific multiset constraint problem.
+ * Keyword, `#` is used to write down comments.
 
 Note that we could use multiple "e lines" and "t lines" to describe element set and target set respectively. Also, the setting statements are allowed with comment.
 
@@ -235,10 +235,10 @@ First, solver lists the basic info of the multiset constraint problem including 
 Then the settings specified in the MC file are listed. Solver doesn't show the default settings in `settings.py`.
 
 The next block shows the info of MC table and MC dictionary including:
-* Table size: with the form of `row number X column number = table entry number`
-* Elements order: the order of elements for building the table and dictionary.
-* J-range min: this value is True if solver minimizes the column size.
-* Build Time: cost time for building the table and dictionary.
+ * Table size: with the form of `row number X column number = table entry number`
+ * Elements order: the order of elements for building the table and dictionary.
+ * J-range min: this value is True if solver minimizes the column size.
+ * Build Time: cost time for building the table and dictionary.
 
 When solving is finished, solver will show the satisfiability of this MC problem and the solving time.
 
@@ -300,12 +300,12 @@ Let me introduce all avalible solver settings to you.
 There are two width param for us to modify the size of log window.
 
 * SOLVER_WIDTH
- * width of solver window
- * is an even
+  * width of solver window
+  * is an even
 
 * SOLVER_ITEM_WIDTH
- * width of an item name like "Table Size" or "Satisfiability"
- * is an positive integer
+  * width of an item name like "Table Size" or "Satisfiability"
+  * is an positive integer
 
 ```python
 SOLVER_WIDTH = 80 # should be even
@@ -317,22 +317,22 @@ SOLVER_ITEM_WIDTH = 20
 When solver constructs the MC table, it fix the orders of element set and target set first.
 
 * ELEMENTS_ORDER
- * order of elements for building the MC table
- * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'`
- * for example, elements set = `(2, 4, 5, 1, 3)`
+  * order of elements for building the MC table
+  * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'`
+  * for example, elements set = `(2, 4, 5, 1, 3)`
     * use `increase` => elements list = `[1, 2, 3, 4, 5]`
     * use `decrease` => elements list = `[5, 4, 3, 2, 1]`
     * use `no`       => elements list = `[2, 4, 5, 1, 3]` (original order)
 
 * TARGETS_ORDER
- * order of targets for building the MC table
- * this order just affects the choose process
- * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'` (the meaning just as `ELEMENTS_ORDER`)
+  * order of targets for building the MC table
+  * this order just affects the choose process
+  * 3 strings are allowed: `'increase'`, `'decrease'` and `'no'` (the meaning just as `ELEMENTS_ORDER`)
 
 When building MC table, we could decide whether minize the column number of MC table. If the value is true, we could build a smaller MC table with less memory use and less building time. But set this value True can speed up the searching time when quering value of MC table.
 
 * JRANGE_MIN
- * is a boolean value
+  * is a boolean value
 
 ```python
 ELEMENTS_ORDER = 'increase' # increase/decrease/no
@@ -347,13 +347,13 @@ We call the solving process of traveling in the solution space "search". There a
 When doing search, solver tries to choose a target (or choose nothing) picking row element in each level. The strategy of choose can decided by user.
 
 * CHOOSE_NOUSE_FIRST
- * let solver try to choose nothing first
- * is a boolean value
+  * let solver try to choose nothing first
+  * is a boolean value
  
 * CHOOSE_FROM_MAX_OR_MIN
- * let solver try to choose target with max(min) current value first
- * 3 strings are allowed: `'max'`, `'min'` and `'no'`
- * for example, current values of all targets are `[1, 2, 3, 4, 5]`
+  * let solver try to choose target with max(min) current value first
+  * 3 strings are allowed: `'max'`, `'min'` and `'no'`
+  * for example, current values of all targets are `[1, 2, 3, 4, 5]`
      * use `max` => try to choose from 5 to 1
      * use `min` => try to choose from 1 to 5
      * use `no`  => use the original order for choosing
@@ -366,8 +366,8 @@ CHOOSE_FROM_MAX_OR_MIN = 'max' # max/min/no
 Sometimes, other constraint is needed for special MC problem type.
 
 * ALL_USE_RULE
- * all elements should be used by taregts when this param is turned on
- * is a boolean value
+  * all elements should be used by taregts when this param is turned on
+  * is a boolean value
 
 ```python
 ALL_USE_RULE = False
@@ -376,8 +376,8 @@ ALL_USE_RULE = False
 Search process finishes when solver propagates to the first row of MC table defaultly. But in fact, when all targets go into the all true region, the satisfiability is comfirmed as True. We allowed user to turn on this optional check. Note that this check is a time-consuming behavior.
 
 * EARLY_CHECK_SATISFIABILITY
- * check satisfiability in each level 
- * is a boolean value
+  * check satisfiability in each level 
+  * is a boolean value
 
 ```python
 EARLY_CHECK_SATISFIABILITY = False
@@ -386,29 +386,29 @@ When doing search, we can do a early backtracking by early backtrack checking (f
 There are several additional check for early backtrack.
 
 * CHECK_FOR_EARLY_BACKTRACK
- * turn off this param blocks all kinds of early backtrack check
- * is a boolean value
+  * turn off this param blocks all kinds of early backtrack check
+  * is a boolean value
 
 * CHECK_SUM
- * check sum of current values of all targets in each level
- * is a boolean value
+  * check sum of current values of all targets in each level
+  * is a boolean value
 
 * CHECK_SUM_COMB
- * check sum of current values of targets in several combination in each level
- * the size of each combination is specified by param `CHECK_SUM_COMB_NUM`
- * is a boolean value
+  * check sum of current values of targets in several combination in each level
+  * the size of each combination is specified by param `CHECK_SUM_COMB_NUM`
+  * is a boolean value
 
 * CHECK_SUM_COMB_NUM
- * check sum of current values of several targets in each level
- * is a positive integer which is greater than 1
+  * check sum of current values of several targets in each level
+  * is a positive integer which is greater than 1
 
 * CHECK_DISTANCES
- * check the distances between current targets and first False value they will encounter
- * is a boolean value
+  * check the distances between current targets and first False value they will encounter
+  * is a boolean value
 
 * CHECK_FORBIDEN
- * check whether the current target set is a forbiden combination 
- * is a boolean value
+  * check whether the current target set is a forbiden combination 
+  * is a boolean value
 
 ```python
 CHECK_FOR_EARLY_BACKTRACK = True
@@ -460,18 +460,18 @@ PROGRESS = False
 We could use `PROFILING_COUNT` to do the counting for profiling, and `PROFILING_SUMMARY` let solver print the result of profiling.
 
 * PROFILING_COUNT
- * do the counting for profiling
- * is a boolean value
+  * do the counting for profiling
+  * is a boolean value
 
 * PROFILING_SUMMARY
- * let solver print the result of profiling
- * only list the variables specified in tuple param `PROFILING_VARS`
- * is a boolean value
+  * let solver print the result of profiling
+  * only list the variables specified in tuple param `PROFILING_VARS`
+  * is a boolean value
  
 * PROFILING_VARS
- * specify the variables shown in the profiling summary
- * is string tuple
- * solver supports 5 vars now including:
+  * specify the variables shown in the profiling summary
+  * is string tuple
+  * solver supports 5 vars now including:
     * 'backtrack_num'
     * 'check_sum_fail_num'
     * 'check_sum_comb_fail_num'
@@ -494,8 +494,8 @@ PROFILING_SUMMARY = True
 #### Output subset
 
 * OUTPUT SUBSET
- * turn on for outputing the result file when satisfiability is True
- * is a boolean value
+  * turn on for outputing the result file when satisfiability is True
+  * is a boolean value
 
 ```python
 OUTPUT_SUBSET = True
@@ -506,20 +506,20 @@ OUTPUT_SUBSET = True
 Here are some debug params:
 
 * DEBUG_TITLE
- * turn on for printing debug title
- * is a boolean value
+  * turn on for printing debug title
+  * is a boolean value
 
 * DEBUG_MSG
- * turn on for printing debug message
- * is a boolean value
+  * turn on for printing debug message
+  * is a boolean value
 
 * DEBUG_INTERUPT
- * turn on for doing search step by step (action by action)
- * is a boolean value
+  * turn on for doing search step by step (action by action)
+  * is a boolean value
 
 * DEBUG_SHOW_SEARCH_STATUS
- * turn on for printing search status for each search action
- * is a boolean value
+  * turn on for printing search status for each search action
+  * is a boolean value
 
 ```python
 DEBUG_TITLE = False
